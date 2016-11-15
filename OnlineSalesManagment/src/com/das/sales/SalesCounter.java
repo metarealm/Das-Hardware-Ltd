@@ -11,6 +11,7 @@ import com.das.Products;
 import com.das.sales.order.Orders;
 import com.das.sales.order.OrderDetail;
 import com.das.sales.order.Payment;
+import com.das.users.Address;
 import com.das.users.Customer;
 
 public class SalesCounter {
@@ -105,40 +106,24 @@ public class SalesCounter {
 		tx2.commit();
 		session2.close();
 		
-		Customer c=new Customer();
-		c.setAddress1("");
-		c.setAddress2("");
-		c.setBillingAddress("");
-		c.setBillingCity("");
-		c.setBillingCountry("");
-		c.setBillingPostalCode(11);
-		c.setBillingRegion("");
-		c.setBuilding("");
-		c.setCardExpMO("");
-		c.setCardExpYr("");
-		c.setCity("");
-		c.setCountry("");
-		c.setCreditCard("");
-		c.setCreditCardTypeId(22);
-		c.setCustomerId(888);
-		c.setDateEntered(new Date());
-		c.setEmail("");
-		c.setFirstName("");
-		c.setLastName("");
-		c.setPassword(123456);
-		c.setPhone(7619);	
-		c.setPostalCode(20);
-		c.setRoom(5);
-		c.setShipAddress("");
-		c.setShipCity("");
-		c.setShipCountry("");
-		c.setShipPostalCode(55);
-		c.setShipRegion("");
-		c.setState("");
-		c.setVoiceMail("");
+		Customer cust=new Customer();
+		cust.setFirstName("");
+		cust.setLastName("");
+		cust.setUserName("");
+		cust.setPassword("");
+		cust.setDateEntered(new Date());
+	Address addr1=new Address();
+	addr1.setStreet("");
+	addr1.setCity("");
+  addr1.setState("");
+  addr1.setPostalCode(22);
+  addr1.setCountry("");
+  addr1.setAddressLine1("");
+  addr1.setAddressLine2("");
+  cust.getUserAddress.add(addr1);
 		Session session3=factory.openSession();
 		Transaction tx3=session3.beginTransaction();
-		session3.save(c);
+		session3.save(cust);
 		tx3.commit();
 		session3.close();
 		
@@ -175,15 +160,7 @@ public class SalesCounter {
 		session4.save(p);
 		tx4.commit();
 		session4.close();
-		Payment pt=new Payment();
-		pt.setAllowed(true);
-		pt.setPaymentId(123456);
-		pt.setPaymentType("");
-		Session session5=factory.openSession();
-		Transaction tx5=session5.beginTransaction();
-		session5.save(pt);
-		tx5.commit();
-		session5.close();
+
 		factory.close();
     }
 }

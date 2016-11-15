@@ -2,6 +2,10 @@ package com.das;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * @author MAIRREEE
+ *
+ */
 @Entity
 public class Products {
 	@Id 

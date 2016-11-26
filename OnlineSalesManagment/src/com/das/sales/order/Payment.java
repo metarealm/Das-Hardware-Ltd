@@ -1,41 +1,73 @@
 package com.das.sales.order;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import java.util.HashSet;
+import java.util.Set;
 
-@Embeddable
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
+import com.das.users.Address;
+
+@Entity
 public class Payment implements IPayment 
 {
-	@Column(name="CREDIT_CARD")
-private String creditCard;
-	@Column(name="CREDIT_CARD_TYPE_ID")
-private int cerditCardTypeId;
-	@Column(name="CARD_EXP_MO")
-private String cardExpMo;
-	@Column(name="CARD_EXP_YR")
-private String cardExpYr;
-	public String getCreditCard() {
-		return creditCard;
-	}
-	public void setCreditCard(String creditCard) {
-		this.creditCard = creditCard;
-	}
-	public int getCerditCardTypeId() {
-		return cerditCardTypeId;
-	}
-	public void setCerditCardTypeId(int cerditCardTypeId) {
-		this.cerditCardTypeId = cerditCardTypeId;
-	}
-	public String getCardExpMo() {
-		return cardExpMo;
-	}
-	public void setCardExpMo(String cardExpMo) {
-		this.cardExpMo = cardExpMo;
-	}
-	public String getCardExpYr() {
-		return cardExpYr;
-	}
-	public void setCardExpYr(String cardExpYr) {
-		this.cardExpYr = cardExpYr;
-	}
+@Id@GeneratedValue(strategy=GenerationType.AUTO)
+private int paymentId;
+private float paymentAmount;
+private boolean isProcessed;
+@ElementCollection
+private Set<Address> userAddress=new HashSet<Address>();
+/**
+ * @return the paymentId
+ */
+public int getPaymentId() {
+	return paymentId;
+}
+/**
+ * @param paymentId the paymentId to set
+ */
+public void setPaymentId(int paymentId) {
+	this.paymentId = paymentId;
+}
+/**
+ * @return the paymentAmount
+ */
+public float getPaymentAmount() {
+	return paymentAmount;
+}
+/**
+ * @param paymentAmount the paymentAmount to set
+ */
+public void setPaymentAmount(float paymentAmount) {
+	this.paymentAmount = paymentAmount;
+}
+/**
+ * @return the isProcessed
+ */
+public boolean isProcessed() {
+	return isProcessed;
+}
+/**
+ * @param isProcessed the isProcessed to set
+ */
+public void setProcessed(boolean isProcessed) {
+	this.isProcessed = isProcessed;
+}
+/**
+ * @return the userAddress
+ */
+public Set<Address> getUserAddress() {
+	return userAddress;
+}
+/**
+ * @param userAddress the userAddress to set
+ */
+public void setUserAddress(Set<Address> userAddress) {
+	this.userAddress = userAddress;
+}
 }

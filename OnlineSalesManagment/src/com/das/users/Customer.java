@@ -8,56 +8,121 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.das.sales.order.OnlinePayment;
+import com.das.sales.order.Payment;
 @Entity
 public class Customer extends User {
 	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private int customerId;
-	private String firstName,lastName,userName,password;
-	private Date dateEntered;
+	private String firstName,lastName;
+	private Date customerScience;
 	@ElementCollection
-	private Set<Address> userAddress=new HashSet<Address>();
+	private Set<ContactDetail> supplierContactDetail=new HashSet<ContactDetail>();
 	@ElementCollection
 	private Set<Address> shippingAddress=new HashSet<Address>();
 	@ElementCollection
 	private Set<Address> billingAddress=new HashSet<Address>();
-	
-	public String getUserName() {
-		return userName;
+	@OneToMany
+	private Set<Payment> paymentMethod=new HashSet<Payment>();
+	/**
+	 * @return the customerId
+	 */
+	public int getCustomerId() {
+		return customerId;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
-	public String getPassword() {
-		return password;
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public Set<Address> getUserAddress() {
-		return UserAddress;
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
 	}
-	public void setUserAddress(Set<Address> userAddress) {
-		UserAddress = userAddress;
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
+	/**
+	 * @return the customerScience
+	 */
+	public Date getCustomerScience() {
+		return customerScience;
+	}
+	/**
+	 * @param customerScience the customerScience to set
+	 */
+	public void setCustomerScience(Date customerScience) {
+		this.customerScience = customerScience;
+	}
+	/**
+	 * @return the supplierContactDetail
+	 */
+	public Set<ContactDetail> getSupplierContactDetail() {
+		return supplierContactDetail;
+	}
+	/**
+	 * @param supplierContactDetail the supplierContactDetail to set
+	 */
+	public void setSupplierContactDetail(Set<ContactDetail> supplierContactDetail) {
+		this.supplierContactDetail = supplierContactDetail;
+	}
+	/**
+	 * @return the shippingAddress
+	 */
 	public Set<Address> getShippingAddress() {
-		return ShippingAddress;
+		return shippingAddress;
 	}
+	/**
+	 * @param shippingAddress the shippingAddress to set
+	 */
 	public void setShippingAddress(Set<Address> shippingAddress) {
-		ShippingAddress = shippingAddress;
+		this.shippingAddress = shippingAddress;
 	}
-
-	public Set<Payment> getUserPayment() {
-		return UserPayment;
+	/**
+	 * @return the billingAddress
+	 */
+	public Set<Address> getBillingAddress() {
+		return billingAddress;
 	}
-	public void setUserPayment(Set<Payment> userPayment) {
-		UserPayment = userPayment;
+	/**
+	 * @param billingAddress the billingAddress to set
+	 */
+	public void setBillingAddress(Set<Address> billingAddress) {
+		this.billingAddress = billingAddress;
 	}
-	public Date getDateEntered() {
-		return dateEntered;
+	/**
+	 * @return the paymentMethod
+	 */
+	public Set<Payment> getPaymentMethod() {
+		return paymentMethod;
 	}
-	public void setDateEntered(Date dateEntered) {
-		this.dateEntered = dateEntered;
+	/**
+	 * @param paymentMethod the paymentMethod to set
+	 */
+	public void setPaymentMethod(Set<Payment> paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
+	
 	}
 	
 

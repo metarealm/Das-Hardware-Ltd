@@ -1,12 +1,15 @@
 package com.das.sales.order;
 
 import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class OrderDetail {
-	@Id
+	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderId;
 	private int productId,orderNumber,orderDetailId;
 	private float price,quantity,discont,total,size;

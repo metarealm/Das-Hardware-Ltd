@@ -3,8 +3,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Column;
 @Embeddable
 public class Address {
-	@Column(name="STREET_NAME")
-private String street;
+	
 	@Column(name="STATE_NAME")
 	private String state;
 	@Column(name="COUNTRY_NAME")
@@ -14,15 +13,10 @@ private String street;
 	@Column(name="POSTAL_CODE")
 	private int postalCode;
 	@Column(name="ADDRESS_LINE1")
- private String addressLine1;
-@Column(name="ADDRESS_LINE2")
-private String addressLine2;
-	public String getStreet() {
-		return street;
-	}
-	public void setStreet(String street) {
-		this.street = street;
-	}
+	private String addressLine1;
+	@Column(name="ADDRESS_LINE2")
+	private String addressLine2;
+	
 	public String getState() {
 		return state;
 	}

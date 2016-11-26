@@ -27,10 +27,13 @@
         <property name="hbm2ddl.auto">create</property>
 
         <!-- Names the annotated entity class -->
-        <mapping class="com.das.sales.order.Orders"/> 
-        <mapping class="com.das.sales.order.OrderDetail"/> 
-        <mapping class="com.das.users.Customer"/>
-        <mapping class="com.das.Products"/>
+        <mapping class="com.das.users.ContactDetail"/>
+        <mapping class="com.das.transactions.Discount"/>
+        <mapping class="com.das.transactions.ProdCategory"/>
+        <mapping class="com.das.users.User"/>
+        <mapping class="com.das.users.Address"/>
         <mapping class="com.das.sales.order.Payment"/>
+        <mapping class="com.das.sales.order.Orders"/>
+        <mapping class="com.das.users.Customer"/>
 </session-factory>
 </hibernate-configuration>

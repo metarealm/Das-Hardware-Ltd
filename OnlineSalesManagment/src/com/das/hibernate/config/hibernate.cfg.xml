@@ -8,7 +8,7 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 <!-- 		<property name="hibernate.connection_url">jdbc:mysql://localhost:3306/Mydb</property> -->
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Mydb</property>
-		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.username">kirti</property>
 		<property name="hibernate.connection.password">bhabani</property>
 
         <!-- JDBC connection pool (use the built-in) -->
@@ -35,5 +35,7 @@
         <mapping class="com.das.sales.order.Payment"/>
         <mapping class="com.das.sales.order.Orders"/>
         <mapping class="com.das.users.Customer"/>
+        <mapping class="com.das.Product"/>
+        <mapping class="com.das.users.Supplier"/>
 </session-factory>
 </hibernate-configuration>

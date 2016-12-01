@@ -14,30 +14,16 @@ import com.das.sales.order.OnlinePayment;
 import com.das.sales.order.Payment;
 @Entity
 public class Customer extends User {
-	@Id@GeneratedValue(strategy=GenerationType.AUTO)
-	private int customerId;
+
 	private String firstName,lastName;
 	private Date customerScience;
-	@ElementCollection
-	private Set<ContactDetail> supplierContactDetail=new HashSet<ContactDetail>();
 	@ElementCollection
 	private Set<Address> shippingAddress=new HashSet<Address>();
 	@ElementCollection
 	private Set<Address> billingAddress=new HashSet<Address>();
 	@OneToMany
 	private Set<Payment> paymentMethod=new HashSet<Payment>();
-	/**
-	 * @return the customerId
-	 */
-	public int getCustomerId() {
-		return customerId;
-	}
-	/**
-	 * @param customerId the customerId to set
-	 */
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
+
 	/**
 	 * @return the firstName
 	 */
@@ -74,18 +60,18 @@ public class Customer extends User {
 	public void setCustomerScience(Date customerScience) {
 		this.customerScience = customerScience;
 	}
-	/**
+/*	*//**
 	 * @return the supplierContactDetail
-	 */
+	 *//*
 	public Set<ContactDetail> getSupplierContactDetail() {
 		return supplierContactDetail;
 	}
-	/**
+	*//**
 	 * @param supplierContactDetail the supplierContactDetail to set
-	 */
+	 *//*
 	public void setSupplierContactDetail(Set<ContactDetail> supplierContactDetail) {
 		this.supplierContactDetail = supplierContactDetail;
-	}
+	}*/
 	/**
 	 * @return the shippingAddress
 	 */

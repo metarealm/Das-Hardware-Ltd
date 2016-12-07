@@ -29,7 +29,7 @@ public class Supplier extends User{
 	private Collection<Orders> currentOrder=new ArrayList<Orders>();
 	@ElementCollection
 	private Set<Discount>discounts=new HashSet<Discount>();
-	private Date suppliserSince;
+	private Date supplierSience;
 	
 	public String getCompanyName() {
 		return companyName;
@@ -79,10 +79,10 @@ public class Supplier extends User{
 	public void setDiscounts(Set<Discount> discounts) {
 		this.discounts = discounts;
 	}
-	public Date getSupplierScience() {
-		return suppliserSince;
+	public Date getSupplierSience() {
+		return supplierSience;
 	}
-	public void setSupplierScience(Date suppliserSince) {
-		this.suppliserSince = suppliserSince;
+	public void setSupplierSience(Date supplierSience) {
+		this.supplierSience = supplierSience;
 	}
 }

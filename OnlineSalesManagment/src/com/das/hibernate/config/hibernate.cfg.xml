@@ -37,5 +37,6 @@
         <mapping class="com.das.users.Customer"/>
         <mapping class="com.das.Product"/>
         <mapping class="com.das.users.Supplier"/>
+        <mapping class="com.das.sales.order.OrderDetail"/>
 </session-factory>
 </hibernate-configuration>

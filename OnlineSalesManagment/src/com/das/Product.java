@@ -14,8 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
+import com.das.sales.order.OrderDetail;
 import com.das.sales.order.Orders;
 import com.das.transactions.Discount;
+import com.das.transactions.ProdCategory;
 import com.das.users.Supplier;
 
 @Entity
@@ -28,14 +30,18 @@ private String productDescription;
 private int ranking;
 private Date discountStartDate,discountEndDate;
 private float quantityPerUnit,unitPrice,msrp;
-private String availableSizes,availableColors;
+private String availableSize,availableColors;
+@ElementCollection
+private Set<ProdCategory>category=new HashSet<ProdCategory>();
 private float unitWeight,unitsInStock,unitsOnOrder;
 @ElementCollection
 private Set<Discount>discount=new HashSet<Discount>();
 @ManyToMany(mappedBy="suppliedProducts")
-private Collection<Supplier> supliers=new ArrayList<Supplier>();
+private Collection<Supplier> supliers=new ArrayList();
 @ManyToMany
 private Collection<Orders>currentOrders=new ArrayList<Orders>();
+@ManyToMany(mappedBy="product")
+private Collection<OrderDetail>orderDetail=new ArrayList();
 public int getProductId() {
 	return productId;
 }
@@ -90,11 +96,11 @@ public float getMsrp() {
 public void setMsrp(float msrp) {
 	this.msrp = msrp;
 }
-public String getAvailableSizes() {
-	return availableSizes;
+public String getAvailableSize() {
+	return availableSize;
 }
-public void setAvailableSizes(String availableSizes) {
-	this.availableSizes = availableSizes;
+public void setAvailableSize(String availableSize) {
+	this.availableSize = availableSize;
 }
 public String getAvailableColors() {
 	return availableColors;
@@ -120,11 +126,17 @@ public float getUnitsOnOrder() {
 public void setUnitsOnOrder(float unitsOnOrder) {
 	this.unitsOnOrder = unitsOnOrder;
 }
-public Set<Discount> getDiscount() {
-	return discount;
+public Collection<Orders> getCurrentOrders() {
+	return currentOrders;
 }
-public void setDiscount(Set<Discount> discount) {
-	this.discount = discount;
+public void setCurrentOrders(Collection<Orders> currentOrders) {
+	this.currentOrders = currentOrders;
+}
+public Set<ProdCategory> getCategory() {
+	return category;
+}
+public void setCategory(Set<ProdCategory> category) {
+	this.category = category;
 }
 public Collection<Supplier> getSupliers() {
 	return supliers;
@@ -132,10 +144,16 @@ public Collection<Supplier> getSupliers() {
 public void setSupliers(Collection<Supplier> supliers) {
 	this.supliers = supliers;
 }
-public Collection<Orders> getCurrentOrders() {
-	return currentOrders;
+public Collection<OrderDetail> getOrderDetail() {
+	return orderDetail;
 }
-public void setCurrentOrders(Collection<Orders> currentOrders) {
-	this.currentOrders = currentOrders;
+public void setOrderDetail(Collection<OrderDetail> orderDetail) {
+	this.orderDetail = orderDetail;
+}
+public void setDiscount(Set<Discount> discount) {
+	this.discount = discount;
+}
+public Set<Discount> getDiscount() {
+	return discount;
 }
 }

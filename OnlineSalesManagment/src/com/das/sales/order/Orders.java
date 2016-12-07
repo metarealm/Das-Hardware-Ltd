@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
+import com.das.Product;
 import com.das.users.Customer;
 import com.das.users.Supplier;
 
@@ -18,10 +19,8 @@ import com.das.users.Supplier;
 public class Orders implements IOrder {
 	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderId;
-	@ManyToMany
-	private Collection<Customer> customer=new ArrayList<Customer>();
-	@ManyToMany
-	private Collection<Supplier> suppliers=new ArrayList<Supplier>();
+	@ManyToMany(mappedBy="order")
+	private Collection<Customer> customer=new ArrayList();
 	private String orderNumber;
 	private Date orderDate;
 	private float salesTax;
@@ -29,9 +28,13 @@ public class Orders implements IOrder {
 	private String errLoc,errMsg;
 	private boolean fulFilled,paid;
 	@ManyToMany
-	private Collection<Payment>payment=new ArrayList<Payment>();
-	@ManyToMany
-	private Collection<Supplier>supplier=new ArrayList();
+	private Collection<Payment> payment=new ArrayList<Payment>();
+	@ManyToMany(mappedBy="currentOrder")
+	private Collection<Supplier> supplier=new ArrayList();
+	@ManyToMany(mappedBy="currentOrders")
+	private Collection<Product> product=new ArrayList();
+	@ManyToMany(mappedBy="order")
+	private Collection<OrderDetail> orderDetails=new ArrayList();
 	public int getOrderId() {
 		return orderId;
 	}
@@ -103,6 +106,18 @@ public class Orders implements IOrder {
 	}
 	public void setSupplier(Collection<Supplier> supplier) {
 		this.supplier = supplier;
+	}
+	public Collection<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(Collection<Product> product) {
+		this.product = product;
+	}
+	public Collection<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+	public void setOrderDetails(Collection<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 	}
 

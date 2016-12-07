@@ -1,5 +1,7 @@
 package com.das.sales.order;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import com.das.users.Address;
+import com.das.users.Customer;
+import com.das.users.Supplier;
+import com.das.users.User;
 
 @Entity
 public class Payment implements IPayment 
@@ -22,6 +28,12 @@ private float paymentAmount;
 private boolean isProcessed;
 @ElementCollection
 private Set<Address> userAddress=new HashSet<Address>();
+@ManyToMany(mappedBy="paymentAccepted")
+private Collection<Supplier> supplier=new ArrayList();
+@ManyToMany(mappedBy="payment")
+private Collection<Orders> order=new ArrayList();
+@ManyToMany(mappedBy="paymentMethod")
+private Collection<Customer> customer=new ArrayList();
 /**
  * @return the paymentId
  */
@@ -58,16 +70,30 @@ public boolean isProcessed() {
 public void setProcessed(boolean isProcessed) {
 	this.isProcessed = isProcessed;
 }
-/**
- * @return the userAddress
- */
+public Collection<Supplier> getSupplier() {
+	return supplier;
+}
+public void setSupplier(Collection<Supplier> supplier) {
+	this.supplier = supplier;
+}
+public Collection<Orders> getOrder() {
+	return order;
+}
+public void setOrder(Collection<Orders> order) {
+	this.order = order;
+}
+public Collection<Customer> getCustomer() {
+	return customer;
+}
+public void setCustomer(Collection<Customer> customer) {
+	this.customer = customer;
+}
 public Set<Address> getUserAddress() {
 	return userAddress;
 }
-/**
- * @param userAddress the userAddress to set
- */
 public void setUserAddress(Set<Address> userAddress) {
 	this.userAddress = userAddress;
 }
+
+
 }

@@ -1,28 +1,35 @@
 package com.das.users;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.das.sales.order.OnlinePayment;
+import com.das.sales.order.Orders;
 import com.das.sales.order.Payment;
 @Entity
 public class Customer extends User {
 
 	private String firstName,lastName;
-	private Date customerScience;
+	private Date customerSience;
 	@ElementCollection
 	private Set<Address> shippingAddress=new HashSet<Address>();
 	@ElementCollection
 	private Set<Address> billingAddress=new HashSet<Address>();
-	@OneToMany
-	private Set<Payment> paymentMethod=new HashSet<Payment>();
+	@ManyToMany(cascade = {CascadeType.ALL})
+	private Collection<Payment> paymentMethod=new ArrayList<Payment>();
+	@ManyToMany
+	private Collection<Orders> order=new ArrayList<Orders>();
 
 	/**
 	 * @return the firstName
@@ -49,16 +56,16 @@ public class Customer extends User {
 		this.lastName = lastName;
 	}
 	/**
-	 * @return the customerScience
+	 * @return the customerSience
 	 */
-	public Date getCustomerScience() {
-		return customerScience;
+	public Date getCustomerSience() {
+		return customerSience;
 	}
 	/**
-	 * @param customerScience the customerScience to set
+	 * @param customerSience the customerSience to set
 	 */
-	public void setCustomerScience(Date customerScience) {
-		this.customerScience = customerScience;
+	public void setCustomerSience(Date customerSience) {
+		this.customerSience = customerSience;
 	}
 /*	*//**
 	 * @return the supplierContactDetail
@@ -96,18 +103,19 @@ public class Customer extends User {
 	public void setBillingAddress(Set<Address> billingAddress) {
 		this.billingAddress = billingAddress;
 	}
-	/**
-	 * @return the paymentMethod
-	 */
-	public Set<Payment> getPaymentMethod() {
+	public Collection<Payment> getPaymentMethod() {
 		return paymentMethod;
 	}
-	/**
-	 * @param paymentMethod the paymentMethod to set
-	 */
-	public void setPaymentMethod(Set<Payment> paymentMethod) {
+	public void setPaymentMethod(Collection<Payment> paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
+	public Collection<Orders> getOrder() {
+		return order;
+	}
+	public void setOrder(Collection<Orders> order) {
+		this.order = order;
+	}
+	
 	
 	}
 	

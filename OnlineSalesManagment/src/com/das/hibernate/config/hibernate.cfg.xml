@@ -6,9 +6,9 @@
 <session-factory>
 <!-- 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-<!-- 		<property name="hibernate.connection_url">jdbc:mysql://localhost:3306/Mydb</property> -->
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Mydb</property>
-		<property name="hibernate.connection.username">root</property>
+<!-- 		<property name="hibernate.connection_url">jdbc:mysql://:3306/Mydb</property> -->
+		<property name="hibernate.connection.url">jdbc:mysql://92.168.0.8:3306/Mydb</property>
+		<property name="hibernate.connection.username">bhabani</property>
 		<property name="hibernate.connection.password">bhabani</property>
 
         <!-- JDBC connection pool (use the built-in) -->

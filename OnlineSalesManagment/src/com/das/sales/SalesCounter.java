@@ -1,13 +1,22 @@
 package com.das.sales;
+<<<<<<< HEAD
 
 import java.util.Date;
 
+=======
+
+import java.util.Date;
+>>>>>>> MacBook
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+<<<<<<< HEAD
 
 import com.das.Product;
+=======
+import com.das.Products;
+>>>>>>> MacBook
 import com.das.sales.order.Orders;
 import com.das.sales.order.OrderDetail;
 import com.das.sales.order.Payment;

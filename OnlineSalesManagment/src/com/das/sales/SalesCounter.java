@@ -1,12 +1,10 @@
 package com.das.sales;
-import java.util.Date;
 
-import org.hibernate.cfg.AnnotationConfiguration;
+import java.util.Date;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import com.das.Products;
 import com.das.sales.order.Orders;
 import com.das.sales.order.OrderDetail;
